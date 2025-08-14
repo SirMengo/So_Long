@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:34:08 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/14 14:22:19 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/14 16:37:26 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	check_consistency(t_map *map)
 	while (i < map->lines - 1)
 	{
 		j = 0;
-		while(map->map[i][j] != '\n' || map->map[i][j] != '\0')
+		while(map->map[i][j] != '\n' && map->map[i][j] != '\0')
 			j++;
 		if (j != map->length)
 			return (0);
@@ -36,9 +36,9 @@ static int	check_borders(char **map, int l, int length)
 
 	i = 1;
 	j = 0;
-	while(map[0][j] != '\n' || map[0][j] || map[l][j] != '\n' || map[l][j])
+	while(map[0][j] != '\n' && map[0][j] && map[l][j] != '\n' && map[l][j])
 	{
-		if (map[0][j] != '1' ||  map[l][j] != '1')
+		if (map[0][j] != '1' || map[l][j] != '1')
 			return (0);
 		j++;
 	}
@@ -50,7 +50,6 @@ static int	check_borders(char **map, int l, int length)
 	}
 	return (1);
 }
-
 
 static int	exists(t_map *map)
 {
@@ -65,9 +64,9 @@ static int	exists(t_map *map)
 		{
 			if(map->map[i][j] == 'P')
 				map->player++;
-			if(map->map[i][j] == 'C')
+			else if(map->map[i][j] == 'C')
 				map->collectible++;
-			if(map->map[i][j] == 'E')
+			else if(map->map[i][j] == 'E')
 				map->exit++;
 			j++;
 		}
@@ -80,13 +79,37 @@ static int	exists(t_map *map)
 	return (1);
 }
 
+static int	forbidden_character(char **map, int lines)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while(i < lines)
+	{
+		j = 0;
+		while(map[i][j])
+		{
+			if (map[i][j] != '0' && map[i][j] != '1' 
+				&& map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != 'P')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	map_parser(t_map *map)
 {
+	printf("%d", map->lines);
 	if (check_consistency(map) == 0)
 		return (0);
-	if (check_borders(map->map, map->lines - 1, map->length) == 0)
+	if (check_borders(map->map, map->lines - 1, map->length - 1) == 0)
 		return (0);
 	if (exists(map) == 0)
+		return (0);
+	if (forbidden_character(map->map, map->lines) == 0)
 		return (0);
 	return (1);
 }
