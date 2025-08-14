@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scrs.h                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 13:41:01 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/13 13:42:20 by msimoes          ###   ########.fr       */
+/*   Created: 2025/04/11 12:19:12 by msimoes           #+#    #+#             */
+/*   Updated: 2025/08/14 14:39:00 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCRS_H
-# define SCRS_H
+#include "srcs.h"
 
-char	**ft_split(char const *s, char c);
+void	*ft_calloc(size_t n, size_t size)
+{
+	void	*ptr;
+	size_t	mult;
 
-#endif
+	if (n == 0 || size == 0)
+		return (malloc(0));
+	mult = n * size;
+	if (n > INT_MAX / size)
+		return (NULL);
+	ptr = malloc(mult);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, mult);
+	return (ptr);
+}

@@ -6,14 +6,14 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/14 12:36:52 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/14 14:36:49 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "srcs/scrs.h"
+# include "srcs/srcs.h"
 # include "gnl/get_next_line.h"
 # include "minilibx-linux/mlx.h"
 # include <X11/X.h>
@@ -36,6 +36,8 @@ typedef struct	s_map {
 	char	**map;
 }	t_map;
 
-void	init_map_struct(char *fd, t_map *map);
+void	init_map_struct(int fd, t_map *map);
+int		map_parser(t_map *map);
+void	err();
 
 #endif

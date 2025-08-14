@@ -6,11 +6,11 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:05:58 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/13 13:42:09 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/14 14:35:49 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "srcs.h"
 
 static void	ft_free(char **arr)
 {

@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 14:01:48 by msimoes           #+#    #+#             */
-/*   Updated: 2025/05/08 15:27:09 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/14 14:51:46 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	while (*buffer || read(fd, buffer, BUFFER_SIZE) > 0)
 	{
-		line = ft_strjoin(line, buffer);
+		line = gnl_strjoin(line, buffer);
 		if (reset_buffer(buffer))
 			break ;
 	}

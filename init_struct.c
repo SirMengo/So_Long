@@ -6,13 +6,13 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:52:36 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/13 15:28:35 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/14 15:18:38 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_lines(int *fd)
+int	count_lines(char *fd)
 {
 	int	i;
 	int	lines;
@@ -21,7 +21,7 @@ int	count_lines(int *fd)
 	lines = 0;
 	while (fd[i] != '\0')
 	{
-		if(fd[i] == '\n')
+		if(fd[i] == '\n' || fd[i + 1] == '\0')
 			lines++;
 		i++;
 	}
@@ -38,16 +38,24 @@ int	line_length(char *fd)
 	return (length);
 }
 
-void	init_map_struct(int *fd, t_map *map)
+void	init_map_struct(int fd, t_map *map)
 {
 	char *aux;
+	char *gnl_fd;
 	
-	map->lines = count_lines(fd);
-	map->length = line_length(fd);
-	while ((fd = get_next_line(fd)) != NULL)
+	aux = NULL;
+	gnl_fd = NULL;
+	map->player = 0;
+	map->collectible = 0;
+	map->exit = 0;
+	while ((gnl_fd = get_next_line(fd)) != NULL)
 	{
-		aux = fd;
-		free(fd);	
+		printf("%s", gnl_fd);
+		aux = ft_strjoin(aux, gnl_fd);
+		free(gnl_fd);
 	}
+	close(fd);
+	map->lines = count_lines(aux);
+	map->length = line_length(aux);
 	map->map = ft_split(aux, '\n');
 }

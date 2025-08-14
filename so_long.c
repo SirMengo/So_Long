@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/13 15:25:55 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/14 14:33:21 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,17 @@ int main(int argc, char **argv)
 	mlx_loop(mlx);
 
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);*/
-	int		*fd;
+	int		fd;
 	t_map	map;
 	
+	(void)argc;
 	fd = open(argv[1], O_RDONLY);
 	if(fd  < 0)
 		err();
 	init_map_struct(fd, &map);
+	if (map_parser(&map) == 1)
+		printf("Existe");
+	else
+		printf("Nope");
 	close(fd);
 }
