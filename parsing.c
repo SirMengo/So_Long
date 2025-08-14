@@ -6,56 +6,87 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:34:08 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/12 16:25:52 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/14 13:26:14 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	line_consistency(char *fd, int len, int lines)
+int	check_borders(char **map, int l, int length)
 {
-	int	i;
-	int	current;
-	
-	i = 0;
-	while(fd[i] != '\0')
+	int i;
+	int j;
+
+	i = 1;
+	j = 0;
+	while(map[0][j] != '\n' || map[0][j] || map[l][y] != '\n' || map[l][j])
 	{
-		if(fd[i] == '\n')
-		{
-			if(current != len)
-				return (0);
-			current = 0;
-		}
+		if (map[0][j] != '1' ||  map[l][j] != '1')
+			return (0);
+		j++;
+	}
+	while(i < l)
+	{
+		if (map[i][0] != '1' || map[i][length] != '1')
+			return (0);
 		i++;
-		current++;
 	}
 	return (1);
 }
 
-int	get_sizes(char *fd)
+int	check_consistency(t_map *map)
 {
 	int i;
-	int	len;
-	int	lines;
+	int j;
 
-	len = 0;
-	while(fd[len] != '\n' || fd[len] == '\0')
-		len++;
-	lines = 0;
 	i = 0;
-	while(fd[i] != '\0')
+	while (i < map->lines - 1)
 	{
-		if(fd[i] == '\n')
-			lines++;
+		j = 0;
+		while(map->map[i][j] != '\n' || map->map[i][j] != '\0')
+			j++;
+		if (j != map->length)
+			return (0);
 		i++;
 	}
-	if(line_consistency(fd, len, lines) == 1)
-		return (1);
-	return (0);
+	return (1);
 }
 
-int	map_parser(char *fd)
+int	exists(t_map *map)
 {
-	if(get_sizes(fd) == 1)
-		
+	int	i;
+	int	j;
+
+	i = 1;
+	while(i < map->lines)
+	{
+		j = 0;
+		while(map->map[i][j])
+		{
+			if(map->map[i][j] == 'P')
+				map->player++;
+			if(map->map[i][j] == 'C')
+				map->collectible++;
+			if(map->map[i][j] == 'E')
+				map->exit++;
+			j++;
+		}
+		i++;
+	}
+	if (map->player != 1 || map->exit != 1)
+		return (0);
+	if (map->collectible == 0)
+		return (0);
+	return (1);
+}
+
+int	map_parser(t_map *map)
+{
+	if (check_borders(map->map, map->lines - 1, map->length) == 0)
+		return 0;
+	if (check_consistency(map) == 0)
+		return 0;
+	if (exists(map) == 0)
+		return 0;
+	
 }
