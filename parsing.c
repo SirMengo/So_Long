@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:34:08 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/14 16:37:26 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:33:16 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int	check_consistency(t_map *map)
 	while (i < map->lines - 1)
 	{
 		j = 0;
+		if (!map->map[i])
+			return (0);
 		while(map->map[i][j] != '\n' && map->map[i][j] != '\0')
 			j++;
 		if (j != map->length)
@@ -34,6 +36,8 @@ static int	check_borders(char **map, int l, int length)
 	int i;
 	int j;
 
+	if (!map || !map[0] || !map[l])
+		return (0);
 	i = 1;
 	j = 0;
 	while(map[0][j] != '\n' && map[0][j] && map[l][j] != '\n' && map[l][j])
@@ -44,6 +48,8 @@ static int	check_borders(char **map, int l, int length)
 	}
 	while(i < l)
 	{
+		if (!map[i])
+			return (0);
 		if (map[i][0] != '1' || map[i][length] != '1')
 			return (0);
 		i++;
@@ -60,6 +66,8 @@ static int	exists(t_map *map)
 	while(i < map->lines)
 	{
 		j = 0;
+		if (!map->map[i])
+			return (0);
 		while(map->map[i][j])
 		{
 			if(map->map[i][j] == 'P')
@@ -88,6 +96,8 @@ static int	forbidden_character(char **map, int lines)
 	while(i < lines)
 	{
 		j = 0;
+		if (!map)
+			return (0);
 		while(map[i][j])
 		{
 			if (map[i][j] != '0' && map[i][j] != '1' 
@@ -102,6 +112,11 @@ static int	forbidden_character(char **map, int lines)
 
 int	map_parser(t_map *map)
 {
+	if (!map->map || !map->map[0] || !map->map[map->lines - 1])
+	{
+		err();
+		return (0);
+	}
 	printf("%d", map->lines);
 	if (check_consistency(map) == 0)
 		return (0);
