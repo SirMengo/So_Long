@@ -6,26 +6,20 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:52:36 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/18 11:35:52 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/18 15:22:48 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_lines(char *fd)
+int	count_lines(char **map)
 {
 	int	i;
-	int	lines;
-	
+
 	i = 0;
-	lines = 0;
-	while (fd[i] != '\0')
-	{
-		if(fd[i] == '\n' || fd[i + 1] == '\0')
-			lines++;
+	while (map[i])
 		i++;
-	}
-	return (lines);
+	return (i);
 }
 
 int	line_length(char *fd)
@@ -55,17 +49,17 @@ void	init_map_struct(int fd, t_map *map)
 		free(gnl_fd);
 	}
 	close(fd);
-	map->lines = count_lines(aux);
-	map->length = line_length(aux);
 	map->map = ft_split(aux, '\n');
+	map->lines = count_lines(map->map);
+	map->length = line_length(aux);
 	i = 0;
 	while (i < map->lines)
 	{
-		i++;
 		if (!map->map[i] || map->map[i][0] == '\0')
 		{
 			err();
 			exit (EXIT_FAILURE);
 		}
+		i++;
 	}
 }
