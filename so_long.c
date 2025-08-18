@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/14 20:25:10 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/18 14:45:45 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int main(int argc, char **argv)
 		printf("Existe");
 	else
 		printf("Nope");
+	locate_player(&map);
 	close(fd);
 }

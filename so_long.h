@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/14 14:36:49 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/18 14:44:52 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ typedef struct	s_map {
 void	init_map_struct(int fd, t_map *map);
 int		map_parser(t_map *map);
 void	err();
+void	locate_player(t_map *map);
+
 
 #endif
