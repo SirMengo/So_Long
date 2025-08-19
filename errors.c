@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:36:43 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:17:56 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 15:57:22 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 void	err(int i, char **map, int fd)
 {
-	if (i == 0)
+	if (i == 0 || i == -1)
 	{
 		write (2, "Error: Failed initiating map\n", 29);
 		close(fd);
 		exit(EXIT_FAILURE);
 	}
-	else if (i == -1)
-		write (2, "Error: Failed to open fd\n", 25);
 	else if (i == 1)
 		write (2, "Error: Inconsistent map border\n", 31);
 	else if (i == 2)

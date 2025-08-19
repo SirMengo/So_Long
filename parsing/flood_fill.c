@@ -6,13 +6,13 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 11:57:04 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:00:46 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 15:10:24 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int	check_cpy(char **map_cpy)
+static int	check_cpy(char **map_cpy)
 {
 	int	i;
 	int j;
@@ -33,7 +33,7 @@ int	check_cpy(char **map_cpy)
 	return (1);
 }
 
-void	flood_fill(t_map *map, char **map_cpy, int x, int y)
+static void	flood_fill(t_map *map, char **map_cpy, int x, int y)
 {
 	if (y < 0 || y >= map->lines || x < 0 || x >= map->length)
 		return ;

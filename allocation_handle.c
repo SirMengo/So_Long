@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:17:21 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:08:08 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 15:25:02 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	free_arr(char **arr)
 
 void	main_allocation_handle(char **map, int fd)
 {
-	free_arr(map);
+	if (map)
+		free_arr(map);
 	close(fd);
 }

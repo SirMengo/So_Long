@@ -6,9 +6,13 @@
 #    By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 12:46:46 by msimoes           #+#    #+#              #
-#    Updated: 2025/08/19 14:06:52 by msimoes          ###   ########.fr        #
+#    Updated: 2025/08/19 15:03:47 by msimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+PARP = ./parsing/
+PAR = $(PARP)flood_fill.c $(PARP)main_parser.c $(PARP)parsing.c \
+		$(PARP)init_struct.c
 
 GNLP = ./gnl/
 GNL = $(GNLP)get_next_line.c $(GNLP)get_next_line_utils.c
@@ -18,8 +22,7 @@ EXT = $(EXTP)ft_split.c $(EXTP)ft_strjoin.c $(EXTP)ft_bzero.c \
 		$(EXTP)ft_calloc.c $(EXTP)ft_strlen.c
 
 NAME = so_long
-SRCS = so_long.c parsing.c init_struct.c errors.c flood_fill.c \
-		allocation_handle.c $(GNL) $(EXT)
+SRCS = so_long.c errors.c allocation_handle.c $(PAR) $(GNL) $(EXT)
 
 COMP_LIB = ar rcs
 RM = rm -f

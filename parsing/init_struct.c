@@ -6,13 +6,13 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:52:36 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:05:01 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 15:29:02 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int	count_lines(char **map)
+static int	count_lines(char **map)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	count_lines(char **map)
 	return (i);
 }
 
-int	line_length(char *fd)
+static int	line_length(char *fd)
 {
 	int length;
 
@@ -32,6 +32,18 @@ int	line_length(char *fd)
 	return (length);
 }
 
+static void	initialize(t_map *map, char *aux)
+{
+	map->player = 0;
+	map->collectible = 0;
+	map->exit = 0;
+	map->map = ft_split(aux, '\n');
+	map->lines = count_lines(map->map);
+	map->length = line_length(aux);
+	free(aux);
+
+}
+
 int	init_map_struct(int fd, t_map *map)
 {
 	char	*aux;
@@ -39,9 +51,6 @@ int	init_map_struct(int fd, t_map *map)
 	char	*gnl_fd;
 	
 	gnl_fd = NULL;
-	map->player = 0;
-	map->collectible = 0;
-	map->exit = 0;
 	aux = get_next_line(fd);
 	while ((gnl_fd = get_next_line(fd)) != NULL)
 	{
@@ -57,10 +66,9 @@ int	init_map_struct(int fd, t_map *map)
 		free(tmp);
 		free(gnl_fd);
 	}
+	if (!aux)
+		return (0);
+	initialize(map, aux);
 	free(gnl_fd);
-	map->map = ft_split(aux, '\n');
-	map->lines = count_lines(map->map);
-	map->length = line_length(aux);
-	free(aux);
 	return (1);
 }

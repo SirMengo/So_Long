@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:14:01 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:02:51 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int main(int argc, char **argv)
 {
-	/*void	*mlx;
+	/*
 	void	*mlx_win;
 	void	*image;
 	int		width;
 	int		height;
 	t_data	img;
-
+	
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 480, 480, "title");
 	img.img = mlx_new_image(mlx, 480, 480);
@@ -28,25 +28,17 @@ int main(int argc, char **argv)
 	mlx_put_image_to_window(mlx, mlx_win, image, (0 * 64), (0 * 64));
 	mlx_destroy_image(mlx, image);
 	mlx_loop(mlx);
-
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);*/
-	int		fd;
-	t_map	map;
-	int		error_code;
 	
-	error_code = 0;
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);*/
+	t_map	map;
+	int		fd;
+
 	if (argc == 2)
-	{	
+	{
 		fd = open(argv[1], O_RDONLY);
 		if(fd < 0)
 			err(-1, map.map, fd);
-		if (init_map_struct(fd, &map) == 0)
-			err(0, map.map, fd);
-		error_code = map_parser(&map);
-		if (error_code != (0))
-			err(error_code, map.map, fd);
-		if (locate_player(&map) == 0)
-			err(4, map.map, fd);
+		main_parser(&map, fd, argv[1]);
 		main_allocation_handle(map.map, fd);
 	}
 	else

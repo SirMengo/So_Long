@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:12:28 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:02:40 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,6 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
 typedef struct	s_map {
 	int		lines;
 	int		length;
@@ -36,14 +28,22 @@ typedef struct	s_map {
 	char	**map;
 }	t_map;
 
-//init_struct.c
+typedef struct	s_mlx {
+	void	*mlx;
+	void	*mlx_win;
+	t_map	map;
+}	t_mlx;
+
+//parsing/flood_fill.c
+int		locate_player(t_map *map);
+//parsing/init_struct.c
 int		init_map_struct(int fd, t_map *map);
-//parsing.c
+//parsing/main_parser.c
+void	main_parser(t_map *map, int fd, char *name);
+//parsing/parsing.c
 int		map_parser(t_map *map);
 //error.c
 void	err(int i, char **map, int fd);
-//flood_fill.c
-int		locate_player(t_map *map);
 //allocation_handling.c
 void	free_arr(char **arr);
 void	main_allocation_handle(char **map, int fd);

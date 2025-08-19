@@ -6,11 +6,11 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:34:08 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 13:01:12 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 15:12:27 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 static int	check_consistency(t_map *map)
 {
@@ -31,6 +31,7 @@ static int	check_consistency(t_map *map)
 	}
 	return (1);
 }
+
 static int	check_borders(char **map, int l, int length)
 {
 	int i;
@@ -62,8 +63,8 @@ static int	exists(t_map *map)
 	int	i;
 	int	j;
 
-	i = 1;
-	while(i < map->lines)
+	i = 0;
+	while(++i < map->lines)
 	{
 		j = 0;
 		if (!map->map[i])
@@ -78,7 +79,6 @@ static int	exists(t_map *map)
 				map->exit++;
 			j++;
 		}
-		i++;
 	}
 	if (map->player != 1 || map->exit != 1)
 		return (0);
