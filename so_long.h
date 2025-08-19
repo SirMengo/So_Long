@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/18 14:44:52 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 13:18:58 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,15 @@ typedef struct	s_map {
 	char	**map;
 }	t_map;
 
-void	init_map_struct(int fd, t_map *map);
+//init_struct.c
+int		init_map_struct(int fd, t_map *map);
+//parsing.c
 int		map_parser(t_map *map);
+//error.c
 void	err();
+//flood_fill.c
 void	locate_player(t_map *map);
-
+//allocation_handling.c
+void	free_arr(char **arr);
 
 #endif

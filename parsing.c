@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:34:08 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/18 15:16:30 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 13:01:12 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,19 +112,13 @@ static int	forbidden_character(char **map, int lines)
 
 int	map_parser(t_map *map)
 {
-	if (!map->map || !map->map[0] || !map->map[map->lines - 1])
-	{
-		err();
-		return (0);
-	}
-	printf("%d", map->lines);
 	if (check_consistency(map) == 0)
-		return (0);
+		return (1);
 	if (check_borders(map->map, map->lines - 1, map->length - 1) == 0)
-		return (0);
+		return (1);
 	if (exists(map) == 0)
-		return (0);
+		return (2);
 	if (forbidden_character(map->map, map->lines) == 0)
-		return (0);
-	return (1);
+		return (3);
+	return (0);
 }

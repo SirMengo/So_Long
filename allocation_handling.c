@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   allocation_handling.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 15:36:43 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 13:06:01 by msimoes          ###   ########.fr       */
+/*   Created: 2025/08/19 13:17:21 by msimoes           #+#    #+#             */
+/*   Updated: 2025/08/19 13:17:49 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	err(int i)
+void	free_arr(char **arr)
 {
-	if (i == -1)
-		write (2, "Error: Failed to open fd\n", 25);
-	else if (i == 0)
-		write (2, "Error: Failed initiating map\n", 29);
-	else if (i == 1)
-		write (2, "Error: Inconsistent map border\n", 31);
-	else if (i == 2)
-		write (2, "Error: Invalid number of characters in map\n", 43);
-	else if (i == 3)
-		write (2, "Error: Forbidden character found\n", 33);
-	exit (EXIT_FAILURE);
+	int	i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	while (i > 0)
+		free(arr[--i]);
+	free(arr);
 }

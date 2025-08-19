@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/18 14:45:45 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 13:23:52 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,18 @@ int main(int argc, char **argv)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);*/
 	int		fd;
 	t_map	map;
+	int		error_code;
 	
+	error_code = 0;
 	(void)argc;
 	fd = open(argv[1], O_RDONLY);
-	if(fd  < 0)
-		err();
-	init_map_struct(fd, &map);
-	if (map_parser(&map) == 1)
-		printf("Existe");
-	else
-		printf("Nope");
+	if(fd < 0)
+		err(-1);
+	if (init_map_struct(fd, &map) == 0)
+		err(0);
+	error_code = map_parser(&map);
+	if (error_code != (0))
+		err(error_code);
 	locate_player(&map);
-	close(fd);
+	free_arr(map.map);
 }

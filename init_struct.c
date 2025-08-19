@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:52:36 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/18 15:22:48 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 13:23:57 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ int	line_length(char *fd)
 	return (length);
 }
 
-void	init_map_struct(int fd, t_map *map)
+int	init_map_struct(int fd, t_map *map)
 {
 	char	*aux;
 	char	*gnl_fd;
-	int		i;
 	
 	gnl_fd = NULL;
 	map->player = 0;
@@ -45,21 +44,16 @@ void	init_map_struct(int fd, t_map *map)
 	aux = get_next_line(fd);
 	while ((gnl_fd = get_next_line(fd)) != NULL)
 	{
+		if (gnl_fd[0] == '\n')
+			return (0);
 		aux = ft_strjoin(aux, gnl_fd);
 		free(gnl_fd);
 	}
+	free(gnl_fd);
 	close(fd);
 	map->map = ft_split(aux, '\n');
 	map->lines = count_lines(map->map);
 	map->length = line_length(aux);
-	i = 0;
-	while (i < map->lines)
-	{
-		if (!map->map[i] || map->map[i][0] == '\0')
-		{
-			err();
-			exit (EXIT_FAILURE);
-		}
-		i++;
-	}
+	free(aux);
+	return (1);
 }
