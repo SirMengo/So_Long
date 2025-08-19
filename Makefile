@@ -6,7 +6,7 @@
 #    By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 12:46:46 by msimoes           #+#    #+#              #
-#    Updated: 2025/08/19 13:20:51 by msimoes          ###   ########.fr        #
+#    Updated: 2025/08/19 14:06:52 by msimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ EXT = $(EXTP)ft_split.c $(EXTP)ft_strjoin.c $(EXTP)ft_bzero.c \
 
 NAME = so_long
 SRCS = so_long.c parsing.c init_struct.c errors.c flood_fill.c \
-		allocation_handling.c $(GNL) $(EXT)
+		allocation_handle.c $(GNL) $(EXT)
 
 COMP_LIB = ar rcs
 RM = rm -f

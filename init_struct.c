@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:52:36 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 13:23:57 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 14:05:01 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	line_length(char *fd)
 int	init_map_struct(int fd, t_map *map)
 {
 	char	*aux;
+	char	*tmp;
 	char	*gnl_fd;
 	
 	gnl_fd = NULL;
@@ -44,13 +45,19 @@ int	init_map_struct(int fd, t_map *map)
 	aux = get_next_line(fd);
 	while ((gnl_fd = get_next_line(fd)) != NULL)
 	{
+		tmp = aux;
 		if (gnl_fd[0] == '\n')
+		{
+			free(gnl_fd);
+			free(aux);
+			close(fd);
 			return (0);
+		}
 		aux = ft_strjoin(aux, gnl_fd);
+		free(tmp);
 		free(gnl_fd);
 	}
 	free(gnl_fd);
-	close(fd);
 	map->map = ft_split(aux, '\n');
 	map->lines = count_lines(map->map);
 	map->length = line_length(aux);

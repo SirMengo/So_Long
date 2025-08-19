@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 13:23:52 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 14:14:01 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,20 @@ int main(int argc, char **argv)
 	int		error_code;
 	
 	error_code = 0;
-	(void)argc;
-	fd = open(argv[1], O_RDONLY);
-	if(fd < 0)
-		err(-1);
-	if (init_map_struct(fd, &map) == 0)
-		err(0);
-	error_code = map_parser(&map);
-	if (error_code != (0))
-		err(error_code);
-	locate_player(&map);
-	free_arr(map.map);
+	if (argc == 2)
+	{	
+		fd = open(argv[1], O_RDONLY);
+		if(fd < 0)
+			err(-1, map.map, fd);
+		if (init_map_struct(fd, &map) == 0)
+			err(0, map.map, fd);
+		error_code = map_parser(&map);
+		if (error_code != (0))
+			err(error_code, map.map, fd);
+		if (locate_player(&map) == 0)
+			err(4, map.map, fd);
+		main_allocation_handle(map.map, fd);
+	}
+	else
+		write(2, "Error: No map loaded\n", 21);
 }

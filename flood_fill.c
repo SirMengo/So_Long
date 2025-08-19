@@ -6,20 +6,31 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 11:57:04 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/18 15:35:10 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 14:00:46 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_cpy(char **map_cpy)
+int	check_cpy(char **map_cpy)
 {
-	printf("\n%s\n", map_cpy[0]);
-	printf("%s\n", map_cpy[1]);
-	printf("%s\n", map_cpy[2]);
-	printf("%s\n", map_cpy[3]);
-	printf("%s\n", map_cpy[4]);
+	int	i;
+	int j;
 
+	i = 0;
+	while(map_cpy[i])
+	{
+		j = 0;
+		while (map_cpy[i][j] != '\0' || map_cpy[i][j] == '\n')
+		{
+			if (map_cpy[i][j] == 'P' || map_cpy[i][j] == 'C' 
+				|| map_cpy[i][j] == 'E')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 void	flood_fill(t_map *map, char **map_cpy, int x, int y)
@@ -36,7 +47,7 @@ void	flood_fill(t_map *map, char **map_cpy, int x, int y)
 	flood_fill(map, map_cpy, x - 1, y);
 }
 
-void	locate_player(t_map *map)
+int	locate_player(t_map *map)
 {
 	char	**map_cpy;
 	int		x;
@@ -56,5 +67,7 @@ void	locate_player(t_map *map)
 		}
 		y++;
 	}
-	check_cpy(map_cpy);
+	if (check_cpy(map_cpy) == 0)
+		return (0);
+	return (1);
 }

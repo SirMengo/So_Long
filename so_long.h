@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 13:18:58 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 14:12:28 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ int		init_map_struct(int fd, t_map *map);
 //parsing.c
 int		map_parser(t_map *map);
 //error.c
-void	err();
+void	err(int i, char **map, int fd);
 //flood_fill.c
-void	locate_player(t_map *map);
+int		locate_player(t_map *map);
 //allocation_handling.c
 void	free_arr(char **arr);
+void	main_allocation_handle(char **map, int fd);
 
 #endif
