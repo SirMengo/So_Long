@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:52:36 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 15:29:02 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:09:43 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static void	initialize(t_map *map, char *aux)
 	map->lines = count_lines(map->map);
 	map->length = line_length(aux);
 	free(aux);
-
 }
 
 int	init_map_struct(int fd, t_map *map)

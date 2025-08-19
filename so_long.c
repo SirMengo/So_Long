@@ -6,11 +6,21 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 16:02:51 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:29:34 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	init_game(t_mlx *game)
+{
+	game->mlx = mlx_init();
+	game->mlx_win = mlx_new_window(game->mlx, game->map.length * 64,
+		game->map.lines * 64, "So_Long");
+	//Seg fault on close on X
+	mlx_hook(game->mlx_win, 17, 0, mlx_destroy_window, game->mlx_win);
+	mlx_loop(game->mlx);
+}
 
 int main(int argc, char **argv)
 {
@@ -31,6 +41,7 @@ int main(int argc, char **argv)
 	
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);*/
 	t_map	map;
+	t_mlx	game;
 	int		fd;
 
 	if (argc == 2)
@@ -38,7 +49,8 @@ int main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		if(fd < 0)
 			err(-1, map.map, fd);
-		main_parser(&map, fd, argv[1]);
+		main_parser(&game ,&map, fd, argv[1]);
+		init_game(&game);
 		main_allocation_handle(map.map, fd);
 	}
 	else

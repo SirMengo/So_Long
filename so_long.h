@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 16:02:40 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:12:06 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		locate_player(t_map *map);
 //parsing/init_struct.c
 int		init_map_struct(int fd, t_map *map);
 //parsing/main_parser.c
-void	main_parser(t_map *map, int fd, char *name);
+void	main_parser(t_mlx *game, t_map *map, int fd, char *name);
 //parsing/parsing.c
 int		map_parser(t_map *map);
 //error.c

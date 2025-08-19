@@ -6,13 +6,13 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:50:26 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 16:04:06 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:12:51 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	main_parser(t_map *map, int fd, char *name)
+void	main_parser(t_mlx *game, t_map *map, int fd, char *name)
 {
 	int	error_code;
 	int		len;
@@ -32,4 +32,5 @@ void	main_parser(t_map *map, int fd, char *name)
 		err(error_code, map->map, fd);
 	if (locate_player(map) == 0)
 		err(4, map->map, fd);
+	game->map = *map;
 }
