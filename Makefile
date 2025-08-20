@@ -6,12 +6,12 @@
 #    By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 12:46:46 by msimoes           #+#    #+#              #
-#    Updated: 2025/08/20 15:36:13 by msimoes          ###   ########.fr        #
+#    Updated: 2025/08/20 16:38:28 by msimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MLXIP= ./init_mlx/
-MLXI = $(MLXIP)initiate_mlx.c $(MLXIP)sprites.c
+MLXI = $(MLXIP)initiate_mlx.c $(MLXIP)sprites.c  $(MLXIP)moves.c
 
 PARP = ./parsing/
 PAR = $(PARP)flood_fill.c $(PARP)main_parser.c $(PARP)parsing.c \

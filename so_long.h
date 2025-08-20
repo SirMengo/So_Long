@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 15:35:58 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 16:38:45 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "gnl/get_next_line.h"
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 typedef struct	s_map {
 	int		lines;
@@ -40,6 +42,8 @@ typedef struct	s_mlx {
 
 //init_mlx/initiate_mlx.c
 void	init_game(t_mlx *game);
+//init_mlx/moves.c
+int	keys(int key, t_mlx *game);
 //init_mlx/sprites.c
 void	draw_images(void *mlx, void *win, t_mlx *g);
 int		destroy_assets(t_mlx *game);
