@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 20:21:34 by msimoes          ###   ########.fr       */
+/*   Created: 2025/04/28 10:30:07 by msimoes           #+#    #+#             */
+/*   Updated: 2025/05/01 19:21:17 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int main(int argc, char **argv)
-{
-	static t_map	map;
-	static t_mlx	game;
-	int				fd;
-	
-	if (argc == 2)
-	{
-		fd = open(argv[1], O_RDONLY);
-		if(fd < 0)
-			err(-1, map.map, fd);
-		main_parser(&game ,&map, fd, argv[1]);
-		init_game(&game);
-		main_allocation_handle(map.map, fd);
-	}
-	else
-		write(2, "Error: No map loaded\n", 21);
-}
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdarg.h>
+
+int	ft_putchar(int c);
+int	ft_putstr(char *str);
+int	ft_putnbr(int n);
+int	ft_putuns(unsigned int n);
+int	ft_puthex(unsigned int n, unsigned char c);
+int	ft_printf(const char *format, ...);
+int	ft_address(size_t n);
+
+#endif

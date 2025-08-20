@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:52:36 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 16:09:43 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 16:48:20 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	line_length(char *fd)
 static void	initialize(t_map *map, char *aux)
 {
 	map->player = 0;
+	map->player_x = 0;
+	map->player_y = 0;
 	map->collectible = 0;
 	map->exit = 0;
 	map->map = ft_split(aux, '\n');

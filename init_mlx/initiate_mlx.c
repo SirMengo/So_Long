@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:21:44 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 16:40:08 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 19:51:12 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	init_game(t_mlx *game)
 			game->map.lines * 64, "So_Long");
 		if (check_assets(game) == 0)
 		{
-			destroy_assets(game);
 			write(2, "Error: Asset failed to initialize\n", 34);
+			destroy_assets(game);
 			exit (EXIT_FAILURE);
 		}
 		draw_images(game->mlx, game->mlx_win, game);

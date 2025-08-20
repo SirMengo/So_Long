@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_putuns.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 20:21:34 by msimoes          ###   ########.fr       */
+/*   Created: 2025/04/16 10:32:00 by msimoes           #+#    #+#             */
+/*   Updated: 2025/05/01 19:26:29 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int main(int argc, char **argv)
+int	ft_putuns(unsigned int n)
 {
-	static t_map	map;
-	static t_mlx	game;
-	int				fd;
-	
-	if (argc == 2)
+	int	i;
+
+	i = 0;
+	if (n >= 10)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if(fd < 0)
-			err(-1, map.map, fd);
-		main_parser(&game ,&map, fd, argv[1]);
-		init_game(&game);
-		main_allocation_handle(map.map, fd);
+		i += ft_putuns(n / 10);
+		i += ft_putuns(n % 10);
 	}
 	else
-		write(2, "Error: No map loaded\n", 21);
+		i += ft_putchar(n + '0');
+	return (i);
 }
+
+/*
+int main()
+{
+	int i = 59;
+	printf("%u \n", i);
+	printf("\n%d", ft_putuns(i));
+}
+*/

@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 20:21:34 by msimoes          ###   ########.fr       */
+/*   Created: 2025/04/16 10:32:00 by msimoes           #+#    #+#             */
+/*   Updated: 2025/05/01 19:26:10 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int main(int argc, char **argv)
+int	ft_putnbr(int n)
 {
-	static t_map	map;
-	static t_mlx	game;
-	int				fd;
-	
-	if (argc == 2)
+	int		i;
+	long	j;
+
+	j = n;
+	i = 0;
+	if (j < 0)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if(fd < 0)
-			err(-1, map.map, fd);
-		main_parser(&game ,&map, fd, argv[1]);
-		init_game(&game);
-		main_allocation_handle(map.map, fd);
+		i += ft_putchar('-');
+		j = -j;
+	}
+	if (j >= 10)
+	{
+		i += ft_putnbr(j / 10);
+		i += ft_putnbr(j % 10);
 	}
 	else
-		write(2, "Error: No map loaded\n", 21);
+		i += ft_putchar(j + '0');
+	return (i);
 }
+
+/*
+int main()
+{
+	printf("\n%d", ft_putnbr(9999999999999));
+
+}*/

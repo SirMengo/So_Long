@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 11:57:04 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 15:11:11 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 19:23:30 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,11 @@ int	locate_player(t_map *map)
 		while (map_cpy[y][x] != '\0')
 		{
 			if (map_cpy[y][x] == 'P')
+			{
+				map->player_x = x;
+				map->player_y = y;
 				flood_fill(map, map_cpy, x, y);
+			}
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 15:34:42 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 16:35:09 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 19:54:02 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ void	draw_images(void *mlx, void *win, t_mlx *g)
 		while (g->map.map[y][x] != '\0')
 		{
 			if (g->map.map[y][x] == '1')
-				mlx_put_image_to_window(mlx, win, g->wall, (x * 64), (y * 64));
+				mlx_put_image_to_window(mlx, win, g->wall, x * 64, y * 64);
 			else if (g->map.map[y][x] == '0')
-				mlx_put_image_to_window(mlx, win, g->ground,
-					(x * 64), (y * 64));
+				mlx_put_image_to_window(mlx, win, g->ground, x * 64, y * 64);
 			else if (g->map.map[y][x] == 'P')
-				mlx_put_image_to_window(mlx, win, g->player,
-					(x * 64), (y * 64));
+				mlx_put_image_to_window(mlx, win, g->player, x * 64, y * 64);
 			else if (g->map.map[y][x] == 'C')
-				mlx_put_image_to_window(mlx, win, g->box, (x * 64), (y * 64));
+				mlx_put_image_to_window(mlx, win, g->box, x * 64, y * 64);
 			else if (g->map.map[y][x] == 'E')
-				mlx_put_image_to_window(mlx, win, g->exit, (x * 64), (y * 64));
+				mlx_put_image_to_window(mlx, win, g->ground, x * 64, y * 64);
+			if (g->map.map[y][x] == 'E' && g->map.collectible == 0)
+				mlx_put_image_to_window(mlx, win, g->exit, x * 64, y * 64);
 			x++;
-		}
+		}	
 		y++;
 	}
 }
@@ -85,6 +85,7 @@ void	init_assets(t_mlx *game)
 	int	width;
 	int	height;
 	
+	game->moves = 0;
 	game->ground = mlx_xpm_file_to_image(game->mlx, "sprites/ground.xpm",
 		&width, &height);
 	game->player = mlx_xpm_file_to_image(game->mlx, "sprites/player.xpm",
