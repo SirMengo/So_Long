@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 13:13:59 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 14:40:26 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int main(int argc, char **argv)
 {
-	t_map	map;
-	t_mlx	game;
-	int		fd;
-
+	static t_map	map;
+	static t_mlx	game;
+	int				fd;
+	
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);

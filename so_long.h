@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 12:34:00 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 14:58:29 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include "srcs/srcs.h"
 # include "gnl/get_next_line.h"
 # include "minilibx-linux/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
+# include "minilibx-linux/mlx_int.h"
 
 typedef struct	s_map {
 	int		lines;
