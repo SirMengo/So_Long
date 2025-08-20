@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 18:47:31 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 20:45:52 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <X11/keysym.h>
 
 typedef struct	s_map {
+	int		fd;
 	int		lines;
 	int		length;
 	int		player;

@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 15:34:42 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 19:54:02 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 20:48:00 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	destroy_assets(t_mlx *game)
 	}
 	if(game->map.map)
 		free_arr(game->map.map);
+	close(game->map.fd);
 	exit (EXIT_SUCCESS);
 }
 

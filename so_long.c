@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 20:21:34 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 20:52:10 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 int main(int argc, char **argv)
 {
+	int				fd;
 	static t_map	map;
 	static t_mlx	game;
-	int				fd;
 	
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
 		if(fd < 0)
 			err(-1, map.map, fd);
+		map.fd = fd;
 		main_parser(&game ,&map, fd, argv[1]);
 		init_game(&game);
-		main_allocation_handle(map.map, fd);
+		main_allocation_handle(map.map, map.fd);
 	}
 	else
 		write(2, "Error: No map loaded\n", 21);
