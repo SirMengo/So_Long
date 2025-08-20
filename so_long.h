@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 16:12:06 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 12:34:00 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,16 @@ typedef struct	s_map {
 typedef struct	s_mlx {
 	void	*mlx;
 	void	*mlx_win;
+	void	*ground;
+	void	*player;
+	void	*box;
+	void	*wall;
+	void	*exit;
 	t_map	map;
 }	t_mlx;
 
+//init_mlx/initiate_mlx.c
+void	init_game(t_mlx *game);
 //parsing/flood_fill.c
 int		locate_player(t_map *map);
 //parsing/init_struct.c
