@@ -6,7 +6,7 @@
 #    By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 12:46:46 by msimoes           #+#    #+#              #
-#    Updated: 2025/08/20 12:54:12 by msimoes          ###   ########.fr        #
+#    Updated: 2025/08/20 13:49:03 by msimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ GNL = $(GNLP)get_next_line.c $(GNLP)get_next_line_utils.c
 
 EXTP = ./srcs/
 EXT = $(EXTP)ft_split.c $(EXTP)ft_strjoin.c $(EXTP)ft_bzero.c \
-		$(EXTP)ft_calloc.c $(EXTP)ft_strlen.c
+		$(EXTP)ft_calloc.c $(EXTP)ft_strlen.c $(EXTP)ft_strdup.c
 
 NAME = so_long
 SRCS = so_long.c errors.c allocation_handle.c $(PAR) $(GNL) $(EXT) $(MLXI)

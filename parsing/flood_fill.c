@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 11:57:04 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 15:10:24 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 14:17:47 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@ static int	check_cpy(char **map_cpy)
 		{
 			if (map_cpy[i][j] == 'P' || map_cpy[i][j] == 'C' 
 				|| map_cpy[i][j] == 'E')
+			{
+				free_arr(map_cpy);
 				return (0);
+			}
 			j++;
 		}
 		i++;
 	}
+	free_arr(map_cpy);
 	return (1);
 }
 
@@ -47,13 +51,33 @@ static void	flood_fill(t_map *map, char **map_cpy, int x, int y)
 	flood_fill(map, map_cpy, x - 1, y);
 }
 
+char	**dup_map(char **map, int lines)
+{
+	char	**copy;
+	int		i;
+
+	copy = malloc(sizeof(char *) * (lines + 1));
+	if (!copy)
+		return (NULL);
+	i = 0;
+	while (i < lines)
+	{
+		copy[i] = ft_strdup(map[i]);
+		if (!copy)
+			free_arr(copy);
+		i++;
+	}
+	copy[i] = NULL;
+	return (copy);
+}
+
 int	locate_player(t_map *map)
 {
 	char	**map_cpy;
 	int		x;
 	int		y;
 
-	map_cpy = map->map;
+	map_cpy = dup_map(map->map, map->lines);
 	x = 0;
 	y = 0;
 	while (map_cpy[y] != NULL)
