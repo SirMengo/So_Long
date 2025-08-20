@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:35:33 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 19:53:58 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 21:35:37 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	finish_game(t_mlx *game, int p_y, int p_x)
 	e_x = game->map.exit_x;
 	game->map.map[e_y][e_x] = 'E';
 	if (game->map.map[p_y][p_x] == 'E')
+	{
+		ft_printf("So Long!\n");
 		destroy_assets(game);
+	}
 }
 
 void	move_player(t_mlx *game, int x, int y)
@@ -38,7 +41,8 @@ void	move_player(t_mlx *game, int x, int y)
 		if (game->map.map[p_y + y][p_x + x] == 'C')
 		{
 			game->map.collectible--;
-			ft_printf("Found %d\n", game->map.collectible);
+			ft_printf("Connecting the chiral network.🦅\n"
+				, game->map.collectible);
 		}
 		game->map.map[p_y + y][p_x + x] = 'P';
 		game->map.map[p_y][p_x] = '0';
