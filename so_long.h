@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 14:58:29 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 15:35:58 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ typedef struct	s_mlx {
 
 //init_mlx/initiate_mlx.c
 void	init_game(t_mlx *game);
+//init_mlx/sprites.c
+void	draw_images(void *mlx, void *win, t_mlx *g);
+int		destroy_assets(t_mlx *game);
+int		check_assets(t_mlx *game);
+void	init_assets(t_mlx *game);
 //parsing/flood_fill.c
 int		locate_player(t_map *map);
 //parsing/init_struct.c
