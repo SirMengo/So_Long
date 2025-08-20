@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 15:34:42 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 20:48:00 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 21:04:52 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	draw_images(void *mlx, void *win, t_mlx *g)
 
 int	destroy_assets(t_mlx *game)
 {
+	if (game->map.fd >= 0)
+		close(game->map.fd);
 	if (game->ground)
 		mlx_destroy_image(game->mlx, game->ground);
 	if (game->player)
@@ -62,7 +64,6 @@ int	destroy_assets(t_mlx *game)
 	}
 	if(game->map.map)
 		free_arr(game->map.map);
-	close(game->map.fd);
 	exit (EXIT_SUCCESS);
 }
 
