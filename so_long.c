@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:29 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 21:10:20 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 21:11:04 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int main(int argc, char **argv)
 			err(-1, map.map, fd);
 		map.fd = fd;
 		main_parser(&game ,&map, fd, argv[1]);
-		close(fd);
 		init_game(&game);
 		main_allocation_handle(map.map, map.fd);
 	}
