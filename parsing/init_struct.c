@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:52:36 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 23:16:27 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 23:22:03 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int	init_map_struct(int fd, t_map *map)
 	char	*tmp;
 	char	*gnl_fd;
 
-	gnl_fd = NULL;
 	aux = get_next_line(fd);
-	while ((gnl_fd = get_next_line(fd)) != NULL)
+	gnl_fd = get_next_line(fd);
+	while (gnl_fd != NULL)
 	{
 		tmp = aux;
 		if (gnl_fd[0] == '\n')
@@ -66,10 +66,10 @@ int	init_map_struct(int fd, t_map *map)
 		aux = ft_strjoin(aux, gnl_fd);
 		free(tmp);
 		free(gnl_fd);
+		gnl_fd = get_next_line(fd);
 	}
 	if (!aux)
 		return (0);
 	initialize(map, aux);
-	free(gnl_fd);
 	return (1);
 }
