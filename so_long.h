@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 20:45:52 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 22:39:25 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-typedef struct	s_map {
+typedef struct s_map
+{
 	int		fd;
 	int		lines;
 	int		length;
@@ -33,9 +34,10 @@ typedef struct	s_map {
 	int		exit_x;
 	int		exit_y;
 	char	**map;
-}	t_map;
+}			t_map;
 
-typedef struct	s_mlx {
+typedef struct s_mlx
+{
 	int		moves;
 	void	*mlx;
 	void	*mlx_win;
@@ -45,7 +47,7 @@ typedef struct	s_mlx {
 	void	*wall;
 	void	*exit;
 	t_map	map;
-}	t_mlx;
+}			t_mlx;
 
 //init_mlx/initiate_mlx.c
 void	init_game(t_mlx *game);

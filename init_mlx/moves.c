@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:35:33 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 21:35:37 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 22:43:27 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	finish_game(t_mlx *game, int p_y, int p_x)
 {
 	int	e_y;
 	int	e_x;
-	
+
 	e_y = game->map.exit_y;
 	e_x = game->map.exit_x;
 	game->map.map[e_y][e_x] = 'E';
@@ -41,8 +41,8 @@ void	move_player(t_mlx *game, int x, int y)
 		if (game->map.map[p_y + y][p_x + x] == 'C')
 		{
 			game->map.collectible--;
-			ft_printf("Connecting the chiral network.🦅\n"
-				, game->map.collectible);
+			ft_printf("Connecting the chiral network.🦅\n",
+				game->map.collectible);
 		}
 		game->map.map[p_y + y][p_x + x] = 'P';
 		game->map.map[p_y][p_x] = '0';
@@ -67,7 +67,5 @@ int	keys(int key, t_mlx *game)
 		move_player(game, 0, 1);
 	else if (key == XK_D || key == XK_d)
 		move_player(game, 1, 0);
-
 	return (1);
 }
-

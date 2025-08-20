@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 15:34:42 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 21:04:52 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 22:42:02 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw_images(void *mlx, void *win, t_mlx *g)
 			if (g->map.map[y][x] == 'E' && g->map.collectible == 0)
 				mlx_put_image_to_window(mlx, win, g->exit, x * 64, y * 64);
 			x++;
-		}	
+		}
 		y++;
 	}
 }
@@ -62,7 +62,7 @@ int	destroy_assets(t_mlx *game)
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
-	if(game->map.map)
+	if (game->map.map)
 		free_arr(game->map.map);
 	exit (EXIT_SUCCESS);
 }
@@ -86,16 +86,16 @@ void	init_assets(t_mlx *game)
 {
 	int	width;
 	int	height;
-	
+
 	game->moves = 0;
 	game->ground = mlx_xpm_file_to_image(game->mlx, "sprites/ground.xpm",
-		&width, &height);
+			&width, &height);
 	game->player = mlx_xpm_file_to_image(game->mlx, "sprites/player.xpm",
-		&width, &height);
+			&width, &height);
 	game->box = mlx_xpm_file_to_image(game->mlx, "sprites/box.xpm",
-		&width, &height);
+			&width, &height);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "sprites/wall.xpm",
-		&width, &height);
+			&width, &height);
 	game->exit = mlx_xpm_file_to_image(game->mlx, "sprites/exit.xpm",
-		&width, &height);
+			&width, &height);
 }

@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 11:57:04 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 19:23:30 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 22:52:51 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 static int	check_cpy(char **map_cpy)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
-	while(map_cpy[i])
+	while (map_cpy[i])
 	{
 		j = 0;
 		while (map_cpy[i][j] != '\0' || map_cpy[i][j] == '\n')
 		{
-			if (map_cpy[i][j] == 'P' || map_cpy[i][j] == 'C' 
+			if (map_cpy[i][j] == 'P' || map_cpy[i][j] == 'C'
 				|| map_cpy[i][j] == 'E')
 			{
 				free_arr(map_cpy);
@@ -41,7 +41,7 @@ static void	flood_fill(t_map *map, char **map_cpy, int x, int y)
 {
 	if (y < 0 || y >= map->lines || x < 0 || x >= map->length)
 		return ;
-	if (!(map_cpy[y][x] == 'P' || map_cpy[y][x] == 'E' || map_cpy[y][x] == 'C' 
+	if (!(map_cpy[y][x] == 'P' || map_cpy[y][x] == 'E' || map_cpy[y][x] == 'C'
 		|| map_cpy[y][x] == '0'))
 		return ;
 	map_cpy[y][x] = 'F';

@@ -6,12 +6,12 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 13:41:01 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 13:48:46 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 22:49:16 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCRS_H
-# define SCRS_H
+#ifndef SRCS_H
+# define SRCS_H
 
 # include <stddef.h>
 # include <stdlib.h>

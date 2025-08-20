@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:50:26 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 21:25:06 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 23:04:59 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	locate_exit(t_map *map)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	x = 0;
@@ -55,8 +55,8 @@ void	check_name(int len, char *name, int fd)
 void	main_parser(t_mlx *game, t_map *map, int fd, char *name)
 {
 	int	error_code;
-	int		len;
-	
+	int	len;
+
 	len = ft_strlen(name) - 1;
 	check_name(len, name, fd);
 	error_code = 0;

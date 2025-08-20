@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:34:08 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 15:12:27 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 23:02:30 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	check_consistency(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < map->lines - 1)
@@ -23,7 +23,7 @@ static int	check_consistency(t_map *map)
 		j = 0;
 		if (!map->map[i])
 			return (0);
-		while(map->map[i][j] != '\n' && map->map[i][j] != '\0')
+		while (map->map[i][j] != '\n' && map->map[i][j] != '\0')
 			j++;
 		if (j != map->length)
 			return (0);
@@ -34,20 +34,20 @@ static int	check_consistency(t_map *map)
 
 static int	check_borders(char **map, int l, int length)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (!map || !map[0] || !map[l])
 		return (0);
 	i = 1;
 	j = 0;
-	while(map[0][j] != '\n' && map[0][j] && map[l][j] != '\n' && map[l][j])
+	while (map[0][j] != '\n' && map[0][j] && map[l][j] != '\n' && map[l][j])
 	{
 		if (map[0][j] != '1' || map[l][j] != '1')
 			return (0);
 		j++;
 	}
-	while(i < l)
+	while (i < l)
 	{
 		if (!map[i])
 			return (0);
@@ -64,18 +64,18 @@ static int	exists(t_map *map)
 	int	j;
 
 	i = 0;
-	while(++i < map->lines)
+	while (++i < map->lines)
 	{
 		j = 0;
 		if (!map->map[i])
 			return (0);
-		while(map->map[i][j])
+		while (map->map[i][j])
 		{
-			if(map->map[i][j] == 'P')
+			if (map->map[i][j] == 'P')
 				map->player++;
-			else if(map->map[i][j] == 'C')
+			else if (map->map[i][j] == 'C')
 				map->collectible++;
-			else if(map->map[i][j] == 'E')
+			else if (map->map[i][j] == 'E')
 				map->exit++;
 			j++;
 		}
@@ -93,14 +93,14 @@ static int	forbidden_character(char **map, int lines)
 	int	j;
 
 	i = 1;
-	while(i < lines)
+	while (i < lines)
 	{
 		j = 0;
 		if (!map)
 			return (0);
-		while(map[i][j])
+		while (map[i][j])
 		{
-			if (map[i][j] != '0' && map[i][j] != '1' 
+			if (map[i][j] != '0' && map[i][j] != '1'
 				&& map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != 'P')
 				return (0);
 			j++;

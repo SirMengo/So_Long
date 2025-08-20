@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:52:36 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 16:48:20 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/20 23:16:27 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static int	count_lines(char **map)
 
 static int	line_length(char *fd)
 {
-	int length;
+	int	length;
 
 	length = 0;
-	while(fd[length] != '\0' && fd[length] != '\n')
+	while (fd[length] != '\0' && fd[length] != '\n')
 		length++;
 	return (length);
 }
@@ -50,7 +50,7 @@ int	init_map_struct(int fd, t_map *map)
 	char	*aux;
 	char	*tmp;
 	char	*gnl_fd;
-	
+
 	gnl_fd = NULL;
 	aux = get_next_line(fd);
 	while ((gnl_fd = get_next_line(fd)) != NULL)
