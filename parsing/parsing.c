@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:34:08 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 23:02:30 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/24 02:35:46 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	check_consistency(t_map *map)
 	int	j;
 
 	i = 0;
-	while (i < map->lines - 1)
+	while (i < map->lines)
 	{
 		j = 0;
 		if (!map->map[i])
