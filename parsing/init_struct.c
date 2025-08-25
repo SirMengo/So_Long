@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:52:36 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 23:22:03 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/25 15:04:46 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ static void	initialize(t_map *map, char *aux)
 	map->collectible = 0;
 	map->exit = 0;
 	map->map = ft_split(aux, '\n');
+	if (map->map == NULL)
+	{
+		free(aux);
+		err(6, map->map, map->fd);
+		exit (EXIT_FAILURE);
+	}
 	map->lines = count_lines(map->map);
 	map->length = line_length(aux);
 	free(aux);

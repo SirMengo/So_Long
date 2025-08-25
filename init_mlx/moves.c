@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:35:33 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 22:43:27 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/25 12:14:55 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	move_player(t_mlx *game, int x, int y)
 		game->map.map[p_y][p_x] = '0';
 		game->map.player_x = game->map.player_x + x;
 		game->map.player_y = game->map.player_y + y;
-		ft_printf("Moves: %d\n", game->moves++);
+		ft_printf("Moves: %d\n", ++game->moves);
 		if (game->map.collectible == 0)
 			finish_game(game, p_y + y, p_x + x);
 	}

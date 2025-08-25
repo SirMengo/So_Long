@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 11:57:04 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/20 22:52:51 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/25 15:01:40 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,22 @@ static void	flood_fill(t_map *map, char **map_cpy, int x, int y)
 	flood_fill(map, map_cpy, x - 1, y);
 }
 
-char	**dup_map(char **map, int lines)
+char	**dup_map(t_map *map)
 {
 	char	**copy;
 	int		i;
 
-	copy = malloc(sizeof(char *) * (lines + 1));
+	copy = malloc(sizeof(char *) * (map->lines + 1));
 	if (!copy)
-		return (NULL);
-	i = 0;
-	while (i < lines)
 	{
-		copy[i] = ft_strdup(map[i]);
-		if (!copy)
+		err(6, map->map, map->fd);
+		return (NULL);
+	}
+	i = 0;
+	while (i < map->lines)
+	{
+		copy[i] = ft_strdup(map->map[i]);
+		if (!copy[i])
 			free_arr(copy);
 		i++;
 	}
@@ -77,7 +80,7 @@ int	locate_player(t_map *map)
 	int		x;
 	int		y;
 
-	map_cpy = dup_map(map->map, map->lines);
+	map_cpy = dup_map(map);
 	x = 0;
 	y = 0;
 	while (map_cpy[y] != NULL)

@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:05:58 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/19 12:25:00 by msimoes          ###   ########.fr       */
+/*   Updated: 2025/08/25 14:07:26 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static char	*create_arr(char const *s, char c, int *x)
 	return (word);
 }
 
-static void	add_to_arr(char **arr, char const *word, char c, size_t count)
+static int	add_to_arr(char **arr, char const *word, char c, size_t count)
 {
 	size_t	i;
 	int		x;
@@ -85,11 +85,12 @@ static void	add_to_arr(char **arr, char const *word, char c, size_t count)
 		if (!arr[i])
 		{
 			ft_free(arr);
-			return ;
+			return (0);
 		}
 		i++;
 	}
 	arr[i] = NULL;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -103,6 +104,7 @@ char	**ft_split(char const *s, char c)
 	arr = malloc(sizeof(char *) * (words + 1));
 	if (!arr)
 		return (NULL);
-	add_to_arr(arr, s, c, words);
+	if (!add_to_arr(arr, s, c, words))
+		return (NULL);
 	return (arr);
 }
