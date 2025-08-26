@@ -17,7 +17,8 @@ void	err(int i, char **map, int fd)
 	if (i == 0 || i == -1)
 	{
 		write (2, "Error: Failed initiating map\n", 29);
-		close(fd);
+		if (fd > 2)
+			close(fd);
 		exit(EXIT_FAILURE);
 	}
 	else if (i == 1)
