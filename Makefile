@@ -6,7 +6,7 @@
 #    By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 12:46:46 by msimoes           #+#    #+#              #
-#    Updated: 2025/08/20 18:53:57 by msimoes          ###   ########.fr        #
+#    Updated: 2026/05/20 14:45:32 by msimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRCS  = so_long.c errors.c allocation_handle.c $(PAR) $(GNL) $(PTF) $(EXT) $(MLX
 OBJS  = $(SRCS:.c=.o)
 
 CC       = cc
-CFLAGS   = -Wall -Wextra -Werror -g
+CFLAGS   = -Wall -Wextra -Werror -g -Wno-cast-function-type
 RM       = rm -f
 MLX_ARCH = minilibx-linux/libmlx_Linux.a
 MLX_FLAGS = -lXext -lX11

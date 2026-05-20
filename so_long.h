@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:38:49 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/25 15:08:02 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/05/20 14:44:22 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "gnl/get_next_line.h"
 # include "ft_printf/ft_printf.h"
 # include "minilibx-linux/mlx.h"
-# include "minilibx-linux/mlx_int.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 

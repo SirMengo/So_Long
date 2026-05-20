@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:21:44 by msimoes           #+#    #+#             */
-/*   Updated: 2025/08/25 14:40:35 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/05/20 14:44:09 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	init_game(t_mlx *game)
 			exit (EXIT_FAILURE);
 		}
 		draw_images(game->mlx, game->mlx_win, game);
-		mlx_hook(game->mlx_win, 17, 0, destroy_assets, game);
-		mlx_hook(game->mlx_win, KeyPress, KeyPressMask, keys, game);
+		mlx_hook(game->mlx_win, 17, 0, (int (*)())destroy_assets, game);
+		mlx_hook(game->mlx_win, KeyPress, KeyPressMask, (int (*)())keys, game);
 		mlx_loop(game->mlx);
 	}
 }
